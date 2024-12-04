@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <button mat-button>Home</button>
+  <button mat-button routerLink="/products">Products</button>
+  <span class="spacer"></span>
+  <button mat-button>
+    <mat-icon *ngIf="cart$ | async as cart"
+      matBadge="{{cart.length}}"
+      matBadgeOverlap="false"
+      matBadgeColor="warn">
+      shopping_cart
+    </mat-icon>
+  </button>
+</mat-toolbar>
+

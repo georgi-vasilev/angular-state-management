@@ -1,0 +1,24 @@
+<mat-card class="product-card">
+  <mat-card-header>
+    <mat-card-title> {{ product.title.length > 20 ? (product.title | slice:0:20) + '...' : product.title }}
+    </mat-card-title>
+    <mat-card-title>Title</mat-card-title>
+  </mat-card-header>
+
+  <img mat-card-image [src]="product.image" alt="{{ product.title }}">
+
+  <mat-card-content>
+    <p>${{ product.price }}</p>
+  </mat-card-content>
+
+  <mat-card-actions class="actions-row">
+    <button mat-raised-button color="primary" (click)="addToCart(product)">
+      <mat-icon>add_shopping_cart</mat-icon>
+      Add to Cart
+    </button>
+    <button mat-raised-button color="accent" (click)="viewProduct(product)">
+      <mat-icon>visibility</mat-icon>
+      View Product
+    </button>
+  </mat-card-actions>
+</mat-card>
