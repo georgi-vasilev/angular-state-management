@@ -14,13 +14,17 @@ import { ProductListComponent } from './core/product-list/product-list.component
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatBadgeModule } from '@angular/material/badge';
+import { CartComponent } from './core/cart/cart.component';
+import { CartItemComponent } from './core/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ProductInfoComponent,
-    ProductListComponent
+    ProductListComponent,
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     RouterModule,

@@ -1,0 +1,13 @@
+<div class="product-cart-item">
+  <img [src]="product.image" alt="{{ product.title }}" class="product-image" />
+  <div class="product-details">
+    <a href="#" class="product-title">{{ product.title }}</a>
+    <div class="product-brand">{{ product.brand }}</div>
+    <div class="product-model">{{ product.model }}</div>
+    <div class="product-price">{{ product.price }}лв.</div>
+  </div>
+  <button mat-icon-button color="warn" (click)="removeProduct(product)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+
