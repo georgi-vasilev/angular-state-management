@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CartComponent } from './core/cart/cart.component';
 import { CartItemComponent } from './core/cart-item/cart-item.component';
+import {MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CartItemComponent } from './core/cart-item/cart-item.component';
     MatIconModule,
     MatCardModule,
     MatBadgeModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

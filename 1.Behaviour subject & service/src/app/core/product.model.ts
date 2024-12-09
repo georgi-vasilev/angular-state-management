@@ -15,6 +15,7 @@ export interface IProduct {
   color: string;
   category: string;
   discount: number;
+  quantity: number;
 }
 
 export interface ICart {

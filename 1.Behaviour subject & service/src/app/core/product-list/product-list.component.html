@@ -1,5 +1,7 @@
 <div *ngIf="products$ | async as products" class="product-grid">
   <div *ngFor="let product of products">
-    <app-product-info [product]="product"></app-product-info>
+    <mat-grid-list cols="4" rowHeight="2:1">
+     <app-product-info [product]="product"></app-product-info>
+    </mat-grid-list>
   </div>
 </div>
