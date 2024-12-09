@@ -1,0 +1,24 @@
+<div class="product-cart-item">
+  <img [src]="product.image" alt="{{ product.title }}" class="product-image" />
+  <div class="product-details">
+    <a href="#" class="product-title">{{ product.title }}</a>
+    <div class="product-brand">{{ product.brand }}</div>
+    <div class="product-model">{{ product.model }}</div>
+    <div class="product-price">{{ price }}лв.</div>
+  </div>
+
+  <div class="product-quantity">
+    <button mat-icon-button (click)="decrementQuantity(product)" aria-label="Decrease Quantity">
+      <mat-icon>remove</mat-icon>
+    </button>
+    <span class="quantity-value">{{ product.quantity }}</span>
+    <button mat-icon-button (click)="incrementQuantity(product)" aria-label="Increase Quantity">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <button mat-icon-button color="warn" (click)="removeProduct(product)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+
