@@ -1,0 +1,24 @@
+<div>
+  <h1>Weather Dashboard</h1>
+
+  <div>
+    <input [(ngModel)]="cityName" placeholder="Enter city" />
+    <button (click)="getForecast()">Get Forecast</button>
+  </div>
+
+  <div *ngIf="loading$ | async">Loading forecast...</div>
+  <div *ngIf="error$ | async as errorMsg" style="color:red;">
+    Error: {{ errorMsg }}
+  </div>
+
+  <div *ngIf="forecast$ | async as forecast">
+    <h3>Forecast for {{ cityName }}:</h3>
+    <div *ngFor="let timePoint of forecast.properties.timeseries">
+      <p>
+        <strong>{{ timePoint.time }}:</strong>
+        {{ timePoint.data.instant.details.air_temperature }}°C
+      </p>
+    </div>
+  </div>
+</div>
+
