@@ -2,7 +2,7 @@ import { WeatherState } from "./weather-state";
 
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { switchMap, tap, catchError } from 'rxjs/operators';
+import { switchMap, tap, catchError, delay } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { WeatherService } from "../services/weather-service";
 
@@ -54,22 +54,23 @@ export class WeatherDashboardStore extends ComponentStore<WeatherState> {
       tap(() => this.setLoading(true)),
       switchMap((cityName) =>
         this.weatherService.getCoordinates(cityName)
-          .pipe(
-            switchMap(({ lat, lon }) =>
-              this.weatherService.getForecast(lat, lon)
-                .pipe(
-                  tap((forecast) => this.setForecast(forecast)),
-                  catchError((_) => {
-                    this.setError('Unable to fetch forecast');
-                    return of(null);
-                  })
-                )
-            ),
-            catchError((_) => {
-              this.setError('Invalid city name or geocoding failed');
-              return of(null);
-            })
-          )
+        .pipe(
+          switchMap(({ lat, lon }) =>
+            this.weatherService.getForecast(lat, lon)
+            .pipe(
+              delay(2000),
+              tap((forecast) => this.setForecast(forecast)),
+              catchError((_) => {
+                this.setError('Unable to fetch forecast');
+                return of(null);
+              })
+            )
+          ),
+          catchError((_) => {
+            this.setError('Invalid city name or geocoding failed');
+            return of(null);
+          })
+        )
       )
     )
   );
