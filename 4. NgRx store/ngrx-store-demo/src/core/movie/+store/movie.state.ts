@@ -5,5 +5,6 @@ export interface MovieState {
   selectedMovie: Movie | null;
   loading: boolean;
   error: string | null;
+  favorites: Movie[];
 }
 

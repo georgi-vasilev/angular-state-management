@@ -23,3 +23,7 @@ export const selectError = createSelector(
   (state) => state.error
 );
 
+export const selectFavorites = createSelector(
+  selectMovieState,
+  (state) => state.favorites
+);

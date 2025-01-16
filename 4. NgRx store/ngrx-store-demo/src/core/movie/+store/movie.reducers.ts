@@ -1,12 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { MovieState } from './movie.state';
-import { getMovieDetails, getMovieDetailsFailure, getMovieDetailsSuccess, searchMovies, searchMoviesFailure, searchMoviesSuccess } from './movie.actions';
+import { addFavorite, getMovieDetails, getMovieDetailsFailure, getMovieDetailsSuccess, removeFavorite, searchMovies, searchMoviesFailure, searchMoviesSuccess } from './movie.actions';
 
 const initialState: MovieState = {
   movies: [],
   selectedMovie: null,
   loading: false,
-  error: null
+  error: null,
+  favorites: [],
 };
 
 export const movieReducer = createReducer(
@@ -42,6 +43,25 @@ export const movieReducer = createReducer(
     ...state,
     loading: false,
     error
-  }))
+  })),
+  on(addFavorite, (state, { movie }) => {
+    // If it's already in favorites, do nothing
+    const alreadyFavorite = state.favorites.some(fav => fav.imdbID === movie.imdbID);
+    if (alreadyFavorite) {
+      return state;
+    }
+
+    return {
+      ...state,
+      favorites: [...state.favorites, movie]
+    };
+  }),
+
+  on(removeFavorite, (state, { imdbID }) => {
+    return {
+      ...state,
+      favorites: state.favorites.filter(m => m.imdbID !== imdbID)
+    };
+  })
 );
 

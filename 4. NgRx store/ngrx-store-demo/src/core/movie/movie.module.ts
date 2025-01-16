@@ -13,13 +13,14 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     MovieSearchComponent,
     MovieListComponent,
     MovieDetailsComponent
- ],
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatButtonModule,
     MatListModule,
+    MatIconModule,
     EffectsModule.forFeature([MovieEffects]),
     StoreModule.forFeature('movies', movieReducer)
   ],

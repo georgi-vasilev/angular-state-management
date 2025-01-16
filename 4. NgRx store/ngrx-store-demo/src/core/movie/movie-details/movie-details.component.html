@@ -4,18 +4,17 @@
       <mat-card-title>{{ movie.Title }} ({{ movie.Year }})</mat-card-title>
       <mat-card-subtitle *ngIf="movie.Genre">Genre: {{ movie.Genre }}</mat-card-subtitle>
     </mat-card-header>
-    <img
-      mat-card-image
-      [src]="movie.Poster"
-      [alt]="movie.Title"
-      (error)="movie.Poster = 'assets/placeholder.png'"
-    />
+    <img mat-card-image [src]="movie.Poster" [alt]="movie.Title" (error)="movie.Poster = 'assets/placeholder.png'" />
     <mat-card-content>
       <p><strong>Plot:</strong> {{ movie.Plot }}</p>
       <p><strong>Actors:</strong> {{ movie.Actors }}</p>
       <p><strong>Director:</strong> {{ movie.Director }}</p>
     </mat-card-content>
   </mat-card>
+  <button mat-button color="warn" (click)="onFavoriteClick(movie)">
+    <mat-icon>favorite</mat-icon>
+    Favorite
+  </button>
 </ng-container>
 
 <ng-template #noMovie>
@@ -25,4 +24,3 @@
     </mat-card-content>
   </mat-card>
 </ng-template>
-

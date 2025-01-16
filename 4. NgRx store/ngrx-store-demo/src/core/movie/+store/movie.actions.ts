@@ -31,3 +31,12 @@ export const getMovieDetailsFailure = createAction(
   props<{ error: string }>()
 );
 
+export const addFavorite = createAction(
+  '[Movie] Add Favorite',
+  props<{ movie: Movie }>()
+);
+
+export const removeFavorite = createAction(
+  '[Movie] Remove Favorite',
+  props<{ imdbID: string }>()
+);
