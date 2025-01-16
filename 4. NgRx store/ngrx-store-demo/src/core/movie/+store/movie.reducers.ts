@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { MovieState } from './movie.state';
-import { getMovieDetails, getMovieDetailsFailure, getMovieDetailsSuccess, searchMovies, searchMoviesFailure, searchMoviesSuccess } from './movie-actions';
+import { getMovieDetails, getMovieDetailsFailure, getMovieDetailsSuccess, searchMovies, searchMoviesFailure, searchMoviesSuccess } from './movie.actions';
 
 const initialState: MovieState = {
   movies: [],
@@ -19,7 +19,7 @@ export const movieReducer = createReducer(
   })),
   on(searchMoviesSuccess, (state, { movies }) => ({
     ...state,
-    movies,
+    movies: [...movies],
     loading: false
   })),
   on(searchMoviesFailure, (state, { error }) => ({

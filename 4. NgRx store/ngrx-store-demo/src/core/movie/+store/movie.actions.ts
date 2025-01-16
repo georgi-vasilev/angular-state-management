@@ -1,7 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Movie } from './movie';
 
-// Search
 export const searchMovies = createAction(
   '[Movie Page] Search Movies',
   props<{ query: string }>()
@@ -17,7 +16,6 @@ export const searchMoviesFailure = createAction(
   props<{ error: string }>()
 );
 
-// Get Details
 export const getMovieDetails = createAction(
   '[Movie Page] Get Movie Details',
   props<{ imdbID: string }>()
