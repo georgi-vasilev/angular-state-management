@@ -33,7 +33,7 @@ import { MovieHomeComponent } from './movie-home/movie-home.component';
     MatListModule,
     MatIconModule,
     EffectsModule.forFeature([MovieEffects]),
-    StoreModule.forFeature('movies', movieReducer)
+    StoreModule.forFeature('movieFeature', movieReducer)
   ],
   exports: [
     MovieSearchComponent,
