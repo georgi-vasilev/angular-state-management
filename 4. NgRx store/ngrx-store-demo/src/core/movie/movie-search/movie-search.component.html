@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Search for a movie</mat-label>
+      <input matInput [(ngModel)]="searchTerm" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSearch()">
+      Search
+    </button>
+  </mat-card-content>
+</mat-card>

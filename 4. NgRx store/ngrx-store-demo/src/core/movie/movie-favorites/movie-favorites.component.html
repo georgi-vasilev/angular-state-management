@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-title>My Favorites</mat-card-title>
+  <mat-card-content>
+    <div *ngIf="favorites$ | async as favorites; else noFavorites">
+      <div *ngFor="let movie of favorites" class="favorite-item">
+        <span>{{ movie.Title }} ({{ movie.Year }})</span>
+
+        <button
+          mat-mini-fab
+          color="accent"
+          [routerLink]="['/favorites', movie.imdbID, 'edit']"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-mini-fab
+          color="warn"
+          (click)="onRemoveFavorite(movie.imdbID)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #noFavorites>
+  <p>No favorites yet.</p>
+</ng-template>
+
