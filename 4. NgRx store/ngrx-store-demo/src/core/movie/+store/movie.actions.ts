@@ -40,3 +40,12 @@ export const removeFavorite = createAction(
   '[Movie] Remove Favorite',
   props<{ imdbID: string }>()
 );
+
+export const updateFavorite = createAction(
+  '[Favorites] Update Favorite',
+  props<{ imdbID: string; changes: Partial<Movie> }>()
+);
+
+export const updateFavoriteSuccess = createAction(
+  '[Favorites] Update Favorite Success'
+);

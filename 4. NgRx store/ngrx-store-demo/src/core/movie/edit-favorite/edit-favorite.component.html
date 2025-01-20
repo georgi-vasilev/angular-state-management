@@ -1,0 +1,27 @@
+<ng-container *ngIf="movieToEdit$ | async as movie; else noMovie">
+  <mat-card>
+    <mat-card-title>Edit Favorite</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="Title" />
+          <mat-error *ngIf="form.controls['Title'].invalid">Title is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Year</mat-label>
+          <input matInput formControlName="Year" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>
+
+<ng-template #noMovie>
+  <p>Movie not found.</p>
+</ng-template>
+

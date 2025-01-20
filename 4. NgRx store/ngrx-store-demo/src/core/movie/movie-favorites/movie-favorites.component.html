@@ -4,7 +4,20 @@
     <div *ngIf="favorites$ | async as favorites; else noFavorites">
       <div *ngFor="let movie of favorites" class="favorite-item">
         <span>{{ movie.Title }} ({{ movie.Year }})</span>
-        <button mat-mini-fab color="warn" (click)="onRemoveFavorite(movie.imdbID)">
+
+        <button
+          mat-mini-fab
+          color="accent"
+          [routerLink]="['/favorites', movie.imdbID, 'edit']"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-mini-fab
+          color="warn"
+          (click)="onRemoveFavorite(movie.imdbID)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </div>
