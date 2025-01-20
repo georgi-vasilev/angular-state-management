@@ -9,19 +9,11 @@ mat-toolbar {
   flex: 0 0 auto;
 }
 
-.layout {
-  display: flex;
+.spacer {
   flex: 1 1 auto;
-  height: calc(100vh - 64px);
 }
 
-.movie-list-panel,
-.movie-details-panel {
-  flex: 1 1 50%;
-  overflow-y: auto;
-  padding: 1rem;
+.toolbar-button {
+  margin-left: 8px;
 }
 
-.movie-details-panel {
-  border-left: 1px solid #ccc;
-}

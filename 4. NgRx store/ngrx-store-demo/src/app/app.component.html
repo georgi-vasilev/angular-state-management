@@ -1,14 +1,14 @@
 <mat-toolbar color="primary">
   <span>Movie Explorer</span>
+  <span class="spacer"></span>
+
+  <button mat-raised-button color="accent" class="toolbar-button" [routerLink]="['/']">
+    Home
+  </button>
+  <button mat-raised-button color="warn" class="toolbar-button" [routerLink]="['/favorites']">
+    Favorites
+  </button>
 </mat-toolbar>
 
-<div class="layout">
-  <div class="movie-list-panel">
-    <app-movie-search></app-movie-search>
-    <app-movie-list></app-movie-list>
-  </div>
-  <div class="movie-details-panel">
-    <app-movie-details></app-movie-details>
-  </div>
-</div>
+<router-outlet></router-outlet>
 

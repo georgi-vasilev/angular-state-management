@@ -14,12 +14,14 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MovieHomeComponent } from './movie-home/movie-home.component';
 
 @NgModule({
   declarations: [
     MovieSearchComponent,
     MovieListComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    MovieHomeComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { MatIconModule } from '@angular/material/icon';
   exports: [
     MovieSearchComponent,
     MovieListComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    MovieHomeComponent,
   ],
 })
 export class MovieModule { }

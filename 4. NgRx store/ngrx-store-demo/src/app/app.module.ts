@@ -9,6 +9,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MovieModule } from 'src/core/movie/movie.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
+import { MovieFavoritesComponent } from 'src/core/movie/movie-favorites/movie-favorites.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
+    MovieFavoritesComponent,
     AppRoutingModule,
     MatToolbarModule,
     StoreModule.forRoot({}, {}),
