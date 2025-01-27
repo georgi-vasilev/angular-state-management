@@ -1,5 +1,5 @@
-import { Component, Inject, inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { Component, inject } from '@angular/core';
+import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,9 +24,7 @@ export class AddUserDialogComponent {
   fb = inject(FormBuilder);
   dialogRef = inject(MatDialogRef<AddUserDialogComponent>);
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
+  constructor() {
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
