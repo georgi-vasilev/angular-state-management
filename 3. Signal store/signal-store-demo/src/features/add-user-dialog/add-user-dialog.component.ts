@@ -9,14 +9,15 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-add-user-dialog',
   standalone: true,
- imports: [
+  imports: [
     CommonModule,
     ReactiveFormsModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-  ],  templateUrl: './add-user-dialog.component.html',
+  ],
+  templateUrl: './add-user-dialog.component.html',
   styleUrl: './add-user-dialog.component.scss'
 })
 export class AddUserDialogComponent {

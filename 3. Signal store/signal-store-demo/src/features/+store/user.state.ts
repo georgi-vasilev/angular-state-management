@@ -1,4 +1,4 @@
-import { computed, inject, signal } from '@angular/core';
+import { computed, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { signalStore, withState, withMethods, withHooks, patchState, withComputed } from '@ngrx/signals';
 import { switchMap, tap } from 'rxjs/operators';
