@@ -6,7 +6,7 @@
 
 .toolbar {
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -26,15 +26,14 @@
   flex: 1;
 }
 
-.search-btn {
-  height: 40px;
-  line-height: 40px;
+.button-group {
+  display: flex;
+  gap: 12px;
 }
 
 .user-table {
   width: 100%;
   text-align: left;
-  border-spacing: 0;
 }
 
 .mat-header-cell,

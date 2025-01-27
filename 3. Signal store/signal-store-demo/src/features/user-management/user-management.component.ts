@@ -12,6 +12,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-management',
@@ -28,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     MatToolbarModule,
     MatCardModule,
+    AddUserDialogComponent,
   ],
   templateUrl: './user-management.component.html',
   styleUrl: './user-management.component.scss',
@@ -37,6 +40,7 @@ export class UserManagementComponent implements OnInit {
   store = inject(UserStore);
   searchForm!: FormGroup;
   fb = inject(FormBuilder);
+  dialog = inject(MatDialog);
   snack = inject(MatSnackBar);
 
   ngOnInit(): void {
@@ -50,21 +54,31 @@ export class UserManagementComponent implements OnInit {
     });
   }
 
+  openAddUserDialog(): void {
+    const dialogRef = this.dialog.open(AddUserDialogComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        const newUser = { id: Date.now(), ...result };
+        this.store.addUser(newUser);
+      }
+    });
+  }
+
   onSearch(): void {
     const searchTerm = this.searchForm.get('searchTerm')!.value;
     this.store.updateSearch(searchTerm);
   }
 
+  clearSearch(): void {
+    this.searchForm.reset();
+    this.store.updateSearch('');
+  }
+
   removeUser(id: number) {
     this.store.removeUser(id);
     this.snack.open('User removed successfully!', 'Close', { duration: 3000 });
-  }
-
-  filteredUsers() {
-    const users = this.store.users();
-    const search = this.store.search();
-    return users.filter((user) =>
-      user.name.toLowerCase().includes(search.toLowerCase())
-    );
   }
 }

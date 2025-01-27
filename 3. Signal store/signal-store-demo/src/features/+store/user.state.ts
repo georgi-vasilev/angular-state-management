@@ -39,7 +39,7 @@ export const UserStore = signalStore(
       patchState(store, { users: updatedUsers });
     },
     removeUser(id: number) {
-      const updatedUsers = store.users().filter((user) => user.id !== id);
+      const updatedUsers = store.users().filter((user: User) => user.id !== id);
       patchState(store, { users: updatedUsers });
     },
     updateSearch(search: string) {
