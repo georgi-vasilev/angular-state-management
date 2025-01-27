@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from '../product.model';
 import { CartService } from '../services/cart.service';
 
@@ -8,12 +8,11 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent implements OnInit {
-  constructor(private cart: CartService) { }
-
   price: number = 0;
 
+  constructor(private cart: CartService) { }
+
   @Input() product!: IProduct;
-  @Output() productRemoved = new EventEmitter<number>();
 
   ngOnInit(): void{
     this.price = this.product.price * this.product.quantity;
