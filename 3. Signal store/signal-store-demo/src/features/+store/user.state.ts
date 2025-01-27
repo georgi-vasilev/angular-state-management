@@ -27,13 +27,13 @@ export const UserStore = signalStore(
 
   withComputed(({ users, search }) => ({
     filteredUsers: computed(() =>
-      users().filter((user) =>
+      users().filter((user: User) =>
         user.name.toLowerCase().includes(search().toLowerCase())
       )
     ),
   })),
 
-  withMethods((store, userService = inject(HttpClient)) => ({
+  withMethods((store, http = inject(HttpClient)) => ({
     addUser(user: User) {
       const updatedUsers = [...store.users(), user];
       patchState(store, { users: updatedUsers });
@@ -48,7 +48,7 @@ export const UserStore = signalStore(
     loadUsers: rxMethod<void>(
       pipe(
         switchMap(() => {
-          return userService
+          return http
             .get<User[]>('https://jsonplaceholder.typicode.com/users')
             .pipe(
               tap((users) => {
