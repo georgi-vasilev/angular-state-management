@@ -9,18 +9,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
-
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
+import { FavoritesComponent } from 'src/core/favorites/favorites.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherDashboardComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -30,6 +36,10 @@ import { AppComponent } from './app.component';
     MatIconModule,
     MatProgressSpinnerModule,
     MatCardModule,
+    MatSidenavModule,
+    MatListModule,
+    CommonModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

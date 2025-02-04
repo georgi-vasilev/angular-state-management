@@ -1,54 +1,72 @@
-<mat-toolbar color="primary">
-  <span class="toolbar-title">Weather Dashboard</span>
-</mat-toolbar>
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="side" opened class="favorites-sidenav">
+    <h3>Favorite Cities</h3>
+    <app-favorites></app-favorites>
+  </mat-sidenav>
 
-<div class="content-container">
-  <mat-card class="city-card">
-    <div class="city-input-container">
-      <mat-form-field appearance="outline">
-        <mat-label>Enter city</mat-label>
-        <input matInput [(ngModel)]="cityName" placeholder="e.g. Sofia">
-      </mat-form-field>
-      <button mat-raised-button color="accent" (click)="getForecast()">
-        <mat-icon>search</mat-icon>
-        Get Forecast
-      </button>
-    </div>
-
-    <div class="loading-container" *ngIf="loading$ | async">
-      <mat-spinner diameter="40"></mat-spinner>
-      <span class="loading-text">Loading forecast...</span>
-    </div>
-
-    <div class="error-container" *ngIf="error$ | async as errorMsg">
-      <mat-icon color="warn">error_outline</mat-icon>
-      <span>{{ errorMsg }}</span>
-    </div>
-  </mat-card>
-
-  <div *ngIf="forecast$ | async as forecast">
-    <mat-card class="forecast-card">
-      <mat-card-header>
-        <mat-card-title>
-          <h3>Forecast for {{ cityName }}</h3>
-        </mat-card-title>
-      </mat-card-header>
-
-      <mat-card-content>
-        <div class="forecast-container">
-          <mat-card class="forecast-tile" *ngFor="let timePoint of forecast.properties.timeseries">
-            <mat-card-header>
-              <mat-card-title>{{ timePoint.time | date:'shortTime' }}</mat-card-title>
-              <mat-card-subtitle>{{ timePoint.time | date:'EEE, MMM d' }}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content class="tile-content">
-              <mat-icon class="weather-icon">wb_sunny</mat-icon>
-              <div class="temp">{{ timePoint.data.instant.details.air_temperature }}°C</div>
-            </mat-card-content>
-          </mat-card>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span class="toolbar-title">Weather Dashboard</span>
+    </mat-toolbar>
+    <div class="content-container">
+      <mat-card class="city-card">
+        <div class="city-input-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter city</mat-label>
+            <input
+              matInput
+              [ngModel]="city$ | async"
+              (ngModelChange)="onCityChange($event)"
+              placeholder="e.g. Sofia">
+          </mat-form-field>
+          <button mat-raised-button color="accent" (click)="getForecast()">
+            <mat-icon>search</mat-icon>
+            Get Forecast
+          </button>
+          <button mat-raised-button color="warn" (click)="addToFavorites()">
+            <mat-icon>favorite</mat-icon>
+            Add to Favorites
+          </button>
         </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+      </mat-card>
+
+      <div class="loading-container" *ngIf="loading$ | async">
+        <mat-spinner diameter="40"></mat-spinner>
+        <span class="loading-text">Loading forecast...</span>
+      </div>
+
+      <div class="error-container" *ngIf="error$ | async as errorMsg">
+        <mat-icon color="warn">error_outline</mat-icon>
+        <span>{{ errorMsg }}</span>
+      </div>
+
+
+      <div *ngIf="forecast$ | async as forecast">
+        <mat-card class="forecast-card">
+          <mat-card-header>
+            <mat-card-title>
+              <h3>Forecast for {{ city$ | async }}</h3>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="forecast-container">
+              <mat-card class="forecast-tile" *ngFor="let timePoint of forecast.properties.timeseries">
+                <mat-card-header>
+                  <mat-card-title>{{ timePoint.time | date:'shortTime' }}</mat-card-title>
+                  <mat-card-subtitle>{{ timePoint.time | date:'EEE, MMM d' }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="tile-content">
+                  <mat-icon class="weather-icon">wb_sunny</mat-icon>
+                  <div class="temp">
+                    {{ timePoint.data.instant.details.air_temperature }}°C
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 

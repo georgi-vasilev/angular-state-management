@@ -10,9 +10,10 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<IProduct[]> {
-    return this.http.get<IApiResponse>(this.productsUrl).pipe(
-      map(response => response.products),
-      shareReplay(1)
-    )
+    return this.http.get<IApiResponse>(this.productsUrl)
+      .pipe(
+        map(response => response.products),
+        shareReplay(1)
+      )
   }
 }
