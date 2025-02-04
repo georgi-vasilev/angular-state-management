@@ -1,0 +1,9 @@
+<mat-chip-list>
+  <mat-chip *ngFor="let fav of favorites$ | async"
+    (click)="selectCity(fav)"
+    (removed)="removeFavorite(fav)"
+    [removable]="true"
+    color="primary">
+    {{ fav }}
+    <mat-icon matChipRemove>cancel</mat-icon>
+  </mat-chip></mat-chip-list>

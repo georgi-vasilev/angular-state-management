@@ -3,4 +3,5 @@ export interface WeatherState {
   forecast: any | null;
   loading: boolean;
   error: string | null;
+  favorites: string[];
 }

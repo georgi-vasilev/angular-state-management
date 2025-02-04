@@ -12,14 +12,12 @@ export class ProductInfoComponent implements OnInit {
 
   constructor(private cart: CartService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  public addToCart(product: IProduct): void {
+  addToCart(product: IProduct): void {
     this.cart.updateCart(product);
   }
 
-  public viewProduct(product: IProduct): void {
-  }
+  viewProduct(product: IProduct): void { }
 
 }

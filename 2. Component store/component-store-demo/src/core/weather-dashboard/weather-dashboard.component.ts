@@ -10,14 +10,26 @@ import { WeatherDashboardStore } from '../+store/weather-store';
 export class WeatherDashboardComponent {
   cityName = '';
 
+  city$ = this.store.city$;
   forecast$ = this.store.forecast$;
   loading$ = this.store.loading$;
   error$ = this.store.error$;
 
-  constructor(private store: WeatherDashboardStore) {}
+  constructor(private store: WeatherDashboardStore) { }
+
+  onCityChange(newCity: string): void {
+    this.cityName = newCity
+    this.store.setCity(newCity);
+  }
 
   getForecast() {
-    this.store.getForecast(this.cityName);
+    const currentCity = this.store.getCurrentCity();
+    this.store.getForecast(currentCity);
+  }
+
+  addToFavorites() {
+    const currentCity = this.store.getCurrentCity();
+    this.store.addFavorite(currentCity);
   }
 }
 

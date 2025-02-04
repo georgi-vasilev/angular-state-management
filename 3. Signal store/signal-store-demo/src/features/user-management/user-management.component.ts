@@ -59,7 +59,8 @@ export class UserManagementComponent implements OnInit {
       width: '400px',
     });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
+    dialogRef.afterClosed()
+      .subscribe((result: any) => {
       if (result) {
         const newUser = { id: Date.now(), ...result };
         this.store.addUser(newUser);
