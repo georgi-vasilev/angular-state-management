@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { UserManagementComponent } from 'src/features/user-management/user-management.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     AppRoutingModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(),
   ],
   bootstrap: [AppComponent]
 })
